@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Azure.Security.KeyVault.Secrets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace SalesOrderIntegrationFunctionApp.Iservices
 {
     public interface ISecretService
     {
-        Task<string> GetSecret(string secretName, string kvUrl, string keyVaultName);
+        Task<string> GetSecret(SecretClient client, string secretName);
     }
 }

@@ -12,11 +12,10 @@ namespace SalesOrderIntegrationFunctionApp.Services
 {
     internal class SecretService : ISecretService
     {
-        public async Task<string> GetSecret(string secretName, string kvUrl, string keyVaultName)
-        {
-            SecretClient client = new SecretClient(new Uri(kvUrl), new DefaultAzureCredential());
+        public async Task<string> GetSecret(SecretClient client, string secretName)
+        {           
             Response<KeyVaultSecret> secret = await client.GetSecretAsync(secretName);
             return secret.Value.Value;
-        }
+        }        
     }
 }
